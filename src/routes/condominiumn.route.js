@@ -1,43 +1,21 @@
 import { Router } from "express";
-import Condominiumn from "../models/Condominiumn";
+import { addCondominium, deleteCondominium, getAllCondominiums, getCondominiumByRut, updateCondominium } from "../controllers/condominium.js";
 
 const condominiumnRouter = Router();
 
-
 //Inserta un condominio
-condominiumnRouter.post("/condominiumn/add", async (req, res) => {
-  const condominiumn = Condominiumn(req.body);
-  const condominiumnSave = await condominiumn.save();
-  console.log(condominiumnSave);
-
-  res.send("add condominiumn");
-});
+condominiumnRouter.post("/condominium/add", addCondominium);
 
 //Obtiene los condominio
-condominiumnRouter.get("/condominiumn/get", async (req, res) => {
-  const condominiumnGet = await Condominiumn.find();
-  console.log(condominiumnGet);
-  res.send(condominiumnGet);
-});
+condominiumnRouter.get("/condominium/get", getAllCondominiums);
 
 //Obtiene los condominio por rut
-condominiumnRouter.get("/condominiumn/get-by-rut", async (req, res) => {
-  const { rut } = req.body;
-  console.log(rut);
-  const condominiumnGet = await Condominiumn.findOne({ rut: rut });
-  console.log(condominiumnGet);
-  res.send(condominiumnGet);
-});
+condominiumnRouter.get("/condominium/get-by-rut", getCondominiumByRut);
 
-//Elimina un condominio
-condominiumnRouter.post("/condominiumn/delete", async (req, res) => {
-  const { rut } = req.body;
-  console.log(rut);
-  const condominiumnSave = await Condominiumn.deleteOne({ rut: rut });
-  console.log(condominiumnSave);
+//Update un condominio
+condominiumnRouter.put("/condominium/update", updateCondominium);
 
-  res.send("add condominiumn");
-});
-
+//Borra uno o varios condominios
+condominiumnRouter.post("/condominium/delete", deleteCondominium);
 
 export default condominiumnRouter;

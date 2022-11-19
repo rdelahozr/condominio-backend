@@ -1,10 +1,7 @@
 import express from "express";
-import indexRoutes from "./routes/index.route";
-import loginRoutes from "./routes/login.route";
-import condominiumnRoutes from "./routes/condominiumn.route";
-import propertiesRouter from "./routes/properties.route";
 import morgan from "morgan";
 import cors from "cors";
+import router from './routes/index.route.js'
 
 const app = express();
 
@@ -14,9 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 //routes
-app.use(indexRoutes);
-app.use(loginRoutes);
-app.use(condominiumnRoutes);
-app.use(propertiesRouter);
+app.use(router);
+
 
 export default app;

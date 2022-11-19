@@ -1,6 +1,4 @@
 import { Schema, model } from "mongoose";
-import Condominiumn from "./Condominiumn";
-import mongoose from "mongoose";
 
 const propertiesSchema = new Schema(
   {

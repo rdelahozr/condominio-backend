@@ -1,14 +1,12 @@
 import { Router } from "express";
+import loginRoutes from "./login.route.js";
+import condominiumnRoutes from "./condominiumn.route.js";
+import propertiesRouter from "./properties.route.js";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  console.log(req.body);
-  res.send("Hola Mundo");
-});
-
-router.get("/about", (req, res) => {
-    res.send("Hola about");
-  });
+router.use(loginRoutes);
+router.use(condominiumnRoutes);
+router.use(propertiesRouter);
 
 export default router;

@@ -1,14 +1,20 @@
 import { Router } from "express";
-import User from "../models/Users";
+import User from "../models/Users.js";
 
 const loginRouter = Router();
 
 loginRouter.post("/login/add", async (req, res) => {
-  const user = User(req.body);
-  const userSave = await user.save();
-  console.log(userSave);
-
-  res.send("add user");
+  try {
+    const user = User(req.body);
+    const userSave = await user.save();
+    console.log(userSave);
+    res.status(200).send({
+      message: 'User added successfully'
+    });
+  }catch(e){
+    console.error(e);
+  
+  }
 });
 
 //Obtiene los usuarios
@@ -19,7 +25,7 @@ loginRouter.get("/login/get", async (req, res) => {
 });
 
 //Valida user y pass
-loginRouter.post("/login/login", async (req, res) => {
+loginRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
   console.log(email);
   var message = "";
@@ -41,7 +47,7 @@ loginRouter.post("/login/login", async (req, res) => {
         console.log(message);
       }
     }
-    
+
     res.status(200).json({ code, message, user });
 
   } catch (error) {

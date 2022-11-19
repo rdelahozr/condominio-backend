@@ -1,5 +1,8 @@
-import app from './app'
-import './database'
+import app from './app.js'
+import './database.js'
+import 'dotenv/config'
 
-app.listen(3010);
-console.log("server on port 3010");
+const port = process.env.PORT || 3010;
+
+app.listen(port) ;
+console.log(`server on port ${port}`);
