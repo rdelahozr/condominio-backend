@@ -17,10 +17,9 @@ const propertiesSchema = new Schema(
       required: true,
       trim: true,
     },
-    condominiumn: {
+    condominium: {
       type: Schema.Types.ObjectId,
       ref: 'Condominiumn'
-      
     },
   },
   {

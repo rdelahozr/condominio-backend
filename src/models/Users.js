@@ -28,6 +28,10 @@ const userSchema = new Schema(
       required: true,
       trim: true,
     },
+    condominium: {
+      type: Schema.Types.ObjectId,
+      ref: 'Condominiumn'
+    },
   },
   {
     timestamps: true,

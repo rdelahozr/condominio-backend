@@ -38,7 +38,7 @@ propertiesRouter.get("/properties/get", async (req, res) => {
 propertiesRouter.get("/properties/get-by-condominium", async (req, res) => {
   try {
     const { condominiumId } = req.query;
-    const propertiesByCondominium = await Properties.find({ condominiumn: condominiumId });
+    const propertiesByCondominium = await Properties.find({ condominium: condominiumId });
     res.status(200).send(propertiesByCondominium);
   } catch (e) {
     console.log(e);
